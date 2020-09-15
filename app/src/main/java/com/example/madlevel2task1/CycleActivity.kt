@@ -2,6 +2,7 @@ package com.example.madlevel2task1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
@@ -20,6 +21,31 @@ class CycleActivity : AppCompatActivity()
         binding = ActivityCycleBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
+}
+
+class PlaceAdapter(private val places: List<Place>) : RecyclerView.Adapter<PlaceAdapter.ViewHolder>()
+{
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+                return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_place, parent, false))
+        }
+
+        override fun getItemCount(): Int {
+                return places.size
+        }
+
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+                holder.bind(places[position])
+        }
+
+        inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView)
+        {
+                val binding = ItemPlaceBinding.bind(itemView)
+                fun bind(place : Place)
+                {
+                        binding.imgLocation.setImageResource(place.imageResId)
+                        binding.txtPlace.text = place.name
+                }
+        }
 }
 
 data class Place
@@ -96,30 +122,5 @@ data class Place
                         R.drawable.hawaii,
                         R.drawable.alaska_denali
                 )
-        }
-}
-
-class PlaceAdapter(private val places: List<Place>) : RecyclerView.Adapter<PlaceAdapter.ViewHolder>()
-{
-        inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView)
-        {
-                val binding = ItemPlaceBinding.bind(itemView)
-                fun bind(place : Place)
-                {
-                        binding.imgLocation.setImageResource(place.imageResId)
-                        binding.txtPlace.text = place.name
-                }
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-                TODO("Not yet implemented")
-        }
-
-        override fun getItemCount(): Int {
-                TODO("Not yet implemented")
-        }
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-                TODO("Not yet implemented")
         }
 }
