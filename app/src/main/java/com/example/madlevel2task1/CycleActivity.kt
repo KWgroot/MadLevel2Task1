@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.madlevel2task1.databinding.ActivityCycleBinding
 import com.example.madlevel2task1.databinding.ItemPlaceBinding
 
@@ -21,6 +23,15 @@ class CycleActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         binding = ActivityCycleBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        initViews()
+    }
+
+    private fun initViews()
+    {
+        binding.rvPlaces.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL) //Not sure about this, found on stackoverflow
+        binding.rvPlaces.adapter = placeAdapter
+
+        //fill
     }
 }
 
