@@ -28,10 +28,14 @@ class CycleActivity : AppCompatActivity()
 
     private fun initViews()
     {
-        binding.rvPlaces.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL) //Not sure about this, found on stackoverflow
+        binding.rvPlaces.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         binding.rvPlaces.adapter = placeAdapter
 
-        //fill
+            for (i in Place.PLACE_NAMES.indices)
+            {
+                    places.add(Place(Place.PLACE_NAMES[i], Place.PLACE_RES_DRAWABLE_IDS[i]))
+            }
+            placeAdapter.notifyDataSetChanged()
     }
 }
 
