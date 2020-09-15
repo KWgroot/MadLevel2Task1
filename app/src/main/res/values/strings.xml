@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MadLevel2Task1</string>
+    <string name="location">Location</string>
+    <string name="imagelocation">imageLocation</string>
 </resources>
