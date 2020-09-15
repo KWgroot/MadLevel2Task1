@@ -12,8 +12,9 @@ import com.example.madlevel2task1.databinding.ItemPlaceBinding
 
 class CycleActivity : AppCompatActivity()
 {
-
     private lateinit var binding: ActivityCycleBinding
+    private val places = arrayListOf<Place>()
+    private val placeAdapter = PlaceAdapter(places)
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
